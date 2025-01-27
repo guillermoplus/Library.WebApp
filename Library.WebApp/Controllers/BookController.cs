@@ -1,3 +1,4 @@
+using Library.Application.UseCases;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.WebApp.Controllers;
@@ -5,16 +6,21 @@ namespace Library.WebApp.Controllers;
 public class BookController : Controller
 {
     public readonly ILogger<BookController> _logger;
+    public readonly GetAllBooksUseCase _getAllBooksUseCase;
 
-    public BookController(ILogger<BookController> logger)
+    public BookController(ILogger<BookController> logger,
+        GetAllBooksUseCase getAllBooksUseCase)
     {
         _logger = logger;
+        _getAllBooksUseCase = getAllBooksUseCase;
     }
 
     // GET: Book
-    public IActionResult Index()
+    public async Task<IActionResult> Index([FromQuery] int? page = 1, [FromQuery] int? pageSize = 10)
     {
-        return View();
+        var books = await _getAllBooksUseCase.ExecuteAsync(page, pageSize);
+
+        return View(books);
     }
 
     // GET: Book/Details/5
