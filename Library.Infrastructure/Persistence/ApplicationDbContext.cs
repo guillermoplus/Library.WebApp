@@ -1,4 +1,4 @@
-﻿using Library.Domain;
+﻿using Library.Domain.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,7 +6,7 @@ namespace Library.Infrastructure.Persistence;
 
 public class ApplicationDbContext : IdentityDbContext
 {
-    public DbSet<Book> Books { get; set; }
+    public DbSet<Book?> Books { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
