@@ -1,9 +1,11 @@
 using Library.Application.Interfaces;
 using Library.Application.UseCases;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.WebApp.Controllers;
 
+[Authorize]
 public class BookController : Controller
 {
     public readonly ILogger<BookController> _logger;
