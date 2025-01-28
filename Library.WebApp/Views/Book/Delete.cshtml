@@ -1,0 +1,32 @@
+﻿@model Library.Application.Interfaces.BookResponse
+
+@{
+    ViewBag.Title = "Delete Book";
+}
+
+<div class="container mt-4">
+    <h1>Delete Book</h1>
+
+    <div class="alert alert-warning">
+        <p>Are you sure you want to delete the following book?</p>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">@Model.Title</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Author:</strong> @Model.Author</p>
+            <p><strong>Genre:</strong> @Model.Genre</p>
+            <p><strong>Publication Year:</strong> @Model.PublicationYear</p>
+            <p><strong>Pages:</strong> @Model.Pages</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id"/>
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </div>
+    </div>
+</div>

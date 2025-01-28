@@ -1,4 +1,6 @@
-﻿namespace Library.Domain.Entities;
+﻿using Library.Domain.Validators;
+
+namespace Library.Domain.Entities;
 
 public class Book : EntityBase
 {
@@ -7,14 +9,14 @@ public class Book : EntityBase
     public string Genre { get; set; }
     public int PublicationYear { get; set; }
     public int Pages { get; set; }
-    
+
     public Book(string title, string author, string genre, int publicationYear, int pages)
     {
-        Title = title;
-        Author = author;
-        Genre = genre;
-        PublicationYear = publicationYear;
-        Pages = pages;
+        Title = BookValidator.Title(title);
+        Author = BookValidator.Author(author);
+        Genre = BookValidator.Genre(genre);
+        PublicationYear = BookValidator.PublicationYear(publicationYear);
+        Pages = BookValidator.Pages(pages);
     }
 
     /// <summary>
@@ -28,11 +30,11 @@ public class Book : EntityBase
     /// <returns>Book instance</returns>
     public Book Update(string title, string author, string genre, int publicationYear, int pages)
     {
-        Title = title;
-        Author = author;
-        Genre = genre;
-        PublicationYear = publicationYear;
-        Pages = pages;
+        Title = BookValidator.Title(title);
+        Author = BookValidator.Author(author);
+        Genre = BookValidator.Genre(genre);
+        PublicationYear = BookValidator.PublicationYear(publicationYear);
+        Pages = BookValidator.Pages(pages);
 
         return this;
     }

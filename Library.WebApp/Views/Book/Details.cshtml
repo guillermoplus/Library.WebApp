@@ -1,0 +1,26 @@
+﻿@model Library.Application.Interfaces.BookResponse
+
+@{
+    ViewBag.Title = "Book Details";
+}
+
+<div class="container mt-4">
+    <h1>Book Details</h1>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">@Model.Title</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Author:</strong> @Model.Author</p>
+            <p><strong>Genre:</strong> @Model.Genre</p>
+            <p><strong>Publication Year:</strong> @Model.PublicationYear</p>
+            <p><strong>Pages:</strong> @Model.Pages</p>
+        </div>
+        <div class="card-footer">
+            <a href="@Url.Action("Index", "Book")" class="btn btn-secondary">Back to List</a>
+            <a href="@Url.Action("Edit", "Book", new { id = Model.Id })" class="btn btn-primary">Edit</a>
+            <a href="@Url.Action("Delete", "Book", new { id = Model.Id })" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+</div>

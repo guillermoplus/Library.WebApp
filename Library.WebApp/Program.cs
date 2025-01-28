@@ -23,6 +23,11 @@ builder.Services.AddScoped<IBookRepository, BookRepository>();
 
 // Add Use Cases
 builder.Services.AddScoped<GetAllBooksUseCase>();
+builder.Services.AddScoped<GetBookByIdUseCase>();
+builder.Services.AddScoped<CreateBookUseCase>();
+builder.Services.AddScoped<UpdateBookUseCase>();
+builder.Services.AddScoped<DeleteBookUseCase>();
+
 
 var app = builder.Build();
 
